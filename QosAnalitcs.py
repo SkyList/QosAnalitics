@@ -11,9 +11,13 @@ def getPingResults(host, nPackages):
     rttValues = re.findall(r"(\d+\.\d+)", resultsFormated)
     return rttValues + lossPercentage
 
-
+def getSpeedTest():
+    process = subprocess.Popen(['speedtest', '--simple'], stdout=subprocess.PIPE)
+    out, err = process.communicate()
+    return re.findall(r"(\d+\.\d+)", out)
 
 def __init(args):
-    print getPingResults(args[1], 4)
+    #print getPingResults(args[1], 4)
+    print getSpeedTest()
 
 __init(sys.argv)
