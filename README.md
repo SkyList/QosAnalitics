@@ -17,3 +17,4 @@ Go to archive path and for run this program:
 
 When test are finalized, all results be saved in two archives `.csv`, `rttResults.csv` and `speedTestResults.csv`.
 `rttResults.csv` contains `['min', 'avg', 'max', 'mdev', 'loss']`
+`speedTestResults.csv` contains `['ping', 'download', 'upload']`
