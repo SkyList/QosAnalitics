@@ -11,9 +11,9 @@ __Running__
 Go to archive path and for run this program:
 `$python qos-analitcs.py [interval] [times] [host]`
 
-> interval - time between each tests, in seconds
-> times - quantity of tests, int natural number
-> host - destination ip host for test, exemple 8.8.8.8
+* interval - time between each tests, in seconds
+* times - quantity of tests, int natural number
+* host - destination ip host for test, exemple 8.8.8.8
 
 When test are finalized, all results be saved in two archives `.csv`, `rttResults.csv` and `speedTestResults.csv`.
 `rttResults.csv` contains `['min', 'avg', 'max', 'mdev', 'loss']`
