@@ -69,7 +69,7 @@ def _init(args):
                 print('Arguments not found. all arguments are required EX.: qos-analitcs.py 60[interval] 10[times] 8.8.8.8[host]')
                 pass
 
-        createCsvArchive(_FILE_RTT_RESULTS, ['min', 'avg', 'max', 'mdev'])
+        createCsvArchive(_FILE_RTT_RESULTS, ['min', 'avg', 'max', 'mdev', 'loss'])
         createCsvArchive(_FILE_SPEEDTEST_RESULTS, ['ping', 'download', 'upload'])
 
         threadRtt = Thread(target=handlerRttTest,args=[args[1],args[2],args[3], 5])
