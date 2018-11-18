@@ -16,5 +16,5 @@ Go to archive path and for run this program:
 * host - destination ip host for test, exemple 8.8.8.8
 
 When test are finalized, all results be saved in two archives `.csv`, `rttResults.csv` and `speedTestResults.csv`.
-`rttResults.csv` contains `['min', 'avg', 'max', 'mdev', 'loss']`
+`rttResults.csv` contains `['min', 'avg', 'max', 'mdev', 'loss']` and
 `speedTestResults.csv` contains `['ping', 'download', 'upload']`
