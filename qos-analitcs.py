@@ -27,7 +27,8 @@ def getSpeedTest(nExecution):
         updateCsvArchive(_FILE_SPEEDTEST_RESULTS, _formatedResults)
 
 def createCsvArchive(_archiveName, _headers):
-        os.system('touch '+_archiveName+'.csv')
+        with open(_archiveName+'.csv', 'wb') as csvfile:
+                spamwriter = csv.writer(csvfile, delimiter=',')
         updateCsvArchive(_archiveName, _headers)
 
 def updateCsvArchive(_archiveName, _arrayValues):
