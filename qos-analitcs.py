@@ -19,9 +19,9 @@ def getPingResults(_host, _nPackages, nExecution):
         _formatedResults = _rttValues + _lossPercentage
         updateCsvArchive(_FILE_RTT_RESULTS, _formatedResults)
 
-def getSpeedTest(nExecution):
+def getSpeedTest(serverId,nExecution):
         print('\nspeed test n.'+str(nExecution))
-        _process = subprocess.Popen(['speedtest-cli.exe', '--simple'], stdout=subprocess.PIPE)
+        _process = subprocess.Popen(['speedtest-cli.exe', '--simple', '--server', str(serverId) ], stdout=subprocess.PIPE)
         _out, _err = _process.communicate()
         _formatedResults = re.findall(r"(\d+\.\d+)", _out)
         updateCsvArchive(_FILE_SPEEDTEST_RESULTS, _formatedResults)
@@ -42,8 +42,8 @@ def _init(args):
         print('---Initializing tests...')
         print('---Estimate duration: ' + time.strftime('%H:%M:%S', time.gmtime(int(args[3]) * int(args[4]))))
         
-        if(len(args) < 4):
-                print('Arguments not found. all arguments are required EX.: qos-analitcs 8.8.8.8[host] 2000[nPackages] 100[nExecution] 1800[iBetweenTest]')
+        if(len(args) < 5):
+                print('Arguments not found. all arguments are required EX.: qos-analitcs 8.8.8.8[host] 2000[nPackages] 100[nExecution] 1800[iBetweenTest] 7460[serverId]')
                 pass
 
         createCsvArchive(_FILE_RTT_RESULTS, ['min', 'avg', 'max', 'mdev', 'loss'])
@@ -51,7 +51,7 @@ def _init(args):
 
         while(_currentExecution < int(args[3])):
                 threadRtt = Thread(target=getPingResults,args=[args[1],args[2], _currentExecution])
-                threadST = Thread(target=getSpeedTest, args=[_currentExecution])
+                threadST = Thread(target=getSpeedTest, args=[args[4], _currentExecution])
                 threadRtt.start()
                 threadST.start()
                 _currentExecution +=1
@@ -59,5 +59,5 @@ def _init(args):
 
         print('---Testes finalizados')
 
-#python qos-analitcs 8.8.8.8 2000 100 1800
+#python qos-analitcs 8.8.8.8 2000 100 1800 7460
 _init(sys.argv)

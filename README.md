@@ -14,12 +14,13 @@ Based in this values, `nPackages` are be sended to `host` with 0.2s interval bet
 
 #####__Running__
 Go to archive path and for run this program:
-`$python qos-analytics.py [host] [nPackages] [nExecution] [iBetweenExecution]`
+`$python qos-analytics.py [host] [nPackages] [nExecution] [iBetweenExecution] [serverId]`
 
 * host - destination ip host for test, ex: 8.8.8.8
 * nPackages - number of packages are sended peer test, ex: 2000
 * nExecution - number of tests, ex: 100
 * iBetweenExecution - interval between each test(in seconds), ex: 1800
+* serverId - server id for speedtest are be realized, ex: 7460
 
 When test are finalized, all results be saved in two archives `.csv`, `rttResults.csv` and `speedTestResults.csv`.
 `rttResults.csv` contains `['min', 'avg', 'max', 'mdev', 'loss']` and
