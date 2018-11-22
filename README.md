@@ -1,4 +1,4 @@
-# qos-analitcs
+# qos-analytics
 
 #####__Description__
 Command-line tool for qos analytics, Speed and Round-Trip time.
@@ -6,16 +6,13 @@ Four arguments are be passed to tool: `host`, `nPackages`, `nExecution` and `iBe
 Based in this values, `nPackages` are be sended to `host` with 0.2s interval between each request in a test. The interval between each test are defined in `iBetweenExecution`(in seconds). Tests are be executed `nExecution` times.
 
 #####__Dependencies__
-
-* python 2.3.x
-* speedtest
+* [Python 2.7.x](https://www.python.org/)
+* [speedtest-cli](https://github.com/sivel/speedtest-cli)
 
 #####__Install speedtest__
-
 `$sudo apt-get instal speedtest-cli`
 
 #####__Running__
-
 Go to archive path and for run this program:
 `$python qos-analytics.py [host] [nPackages] [nExecution] [iBetweenExecution]`
 
