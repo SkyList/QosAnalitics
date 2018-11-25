@@ -59,7 +59,7 @@ def _init(args):
                 _currentExecution +=1
                 time.sleep(float(args[4]))
 
-        print('---End tests')
+        print('---Tests are finalized, search for archives rttResults.csv and speedTestResults.csv')
 
 #python qos-analitcs 8.8.8.8 2000 100 1800 7460
 _init(sys.argv)
