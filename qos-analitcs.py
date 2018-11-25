@@ -1,5 +1,6 @@
 from threading import Thread
 import subprocess
+import datetime
 import time
 import sys
 import csv
@@ -27,9 +28,9 @@ def getSpeedTest(serverId,nExecution):
         updateCsvArchive(_FILE_SPEEDTEST_RESULTS, _formatedResults)
 
 def createCsvArchive(_archiveName, _headers):
-        with open(_archiveName+'.csv', 'wb') as csvfile:
+        with open(_archiveName+'.csv', 'w') as csvfile:
                 spamwriter = csv.writer(csvfile, delimiter=',')
-        updateCsvArchive(_archiveName, _headers)
+                spamwriter.writerow(_headers)
 
 def updateCsvArchive(_archiveName, _arrayValues):
         with open(_archiveName+'.csv', 'a') as csvfile:
@@ -38,9 +39,10 @@ def updateCsvArchive(_archiveName, _arrayValues):
 
 def _init(args):
         _currentExecution = 0
+        estimatedTime = int(args[3]) * int(args[4])
         
         print('---Initializing tests...')
-        print('---Estimate duration: ' + time.strftime('%H:%M:%S', time.gmtime(int(args[3]) * int(args[4]))))
+        print('---Estimate duration: ' + str(datetime.timedelta(seconds=estimatedTime)))
         
         if(len(args) < 5):
                 print('Arguments not found. all arguments are required EX.: qos-analitcs 8.8.8.8[host] 2000[nPackages] 100[nExecution] 1800[iBetweenTest] 7460[serverId]')
@@ -57,7 +59,7 @@ def _init(args):
                 _currentExecution +=1
                 time.sleep(float(args[4]))
 
-        print('---Testes finalizados')
+        print('---End tests')
 
 #python qos-analitcs 8.8.8.8 2000 100 1800 7460
 _init(sys.argv)
