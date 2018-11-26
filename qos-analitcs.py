@@ -5,7 +5,6 @@ import time
 import sys
 import csv
 import re
-import os
 
 _FILE_RTT_RESULTS = 'rttResults'
 _FILE_SPEEDTEST_RESULTS = 'speedTestResults'
